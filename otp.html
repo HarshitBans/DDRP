@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="style(otp).css">
+</head>
+<body>
+    <div class="container">
+        <div class="otp-box">
+            <img src="verificationicon.png" alt="Verification Icon" class="verification-icon">
+            <h2>OTP Verification</h2>
+            <p>One Time Password (OTP) has been sent via SMS to your registered mobile number.</p>
+            <p>Enter the OTP below to verify it.</p>
+            <form action="verify_otp.php" method="POST">
+                <div class="otp-input-group">
+                    <input type="tel" maxlength="1" class="otp-input" name="digit1" required>
+                    <input type="tel" maxlength="1" class="otp-input" name="digit2" required>
+                    <input type="tel" maxlength="1" class="otp-input" name="digit3" required>
+                    <input type="tel" maxlength="1" class="otp-input" name="digit4" required>
+                    <input type="tel" maxlength="1" class="otp-input" name="digit5" required>
+                    <input type="tel" maxlength="1" class="otp-input" name="digit6" required>
+                </div>
+                <div class="resend-container">
+                    <a href="#" class="resend-otp">Resend OTP</a>
+                    <span id="timer">03:00</span>
+                </div>
+                <button type="submit">Verify OTP</button>
+            </form>
+        </div>
+    </div>
+    <script src="timer.js"></script>
+    <script src="otpinput.js"></script>
+</body>
+</html>

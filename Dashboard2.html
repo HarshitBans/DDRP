@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Disaster Resource Planner</title>
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="styles(db2).css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <div class="navbar">
+        
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo" class="logo">
+            <span class="ddrp">DDRP</span>
+        </div>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <div class="nav-links" id="nav-links">
+            <a href="#signin">Sign In</a>
+            <div class="dropdown">
+                <button class="create-account-btn">Create Account</button>
+                <div class="dropdown-content">
+                    <a href="#admin">Admin</a>
+                    <a href="#donator">Donator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown-nav" id="dropdown-nav">
+        <a href="#">Dashboard</a>
+        <a href="#">Requirement</a>
+        <a href="#">Profile</a>
+    </div>
+
+    <header class="header">
+        <div class="slider">
+            <img src="header.jpg" class="slide" alt="Header Image 1">
+            <img src="header1.jpg" class="slide" alt="Header Image 2">
+            <img src="header2.jpg" class="slide" alt="Header Image 3">
+        </div>
+        <div class="header-text">
+            <h1>Welcome to DDRP</h1>
+            <p>Your contributions make a difference.</p>
+        </div>
+    </header>
+
+    <section class="summary-boxes">
+        <div class="summary-box">
+            <h2>Total Requirements</h2>
+            <p>1234 Items</p>
+        </div>
+        <div class="summary-box">
+            <h2>Total Donated</h2>
+            <p>5678 Items</p>
+        </div>
+    </section>
+
+    <section class="info-sections">
+        <div class="info-section">
+            <img src="disaster1.jpg" alt="Disaster Info">
+            <div class="info-text">
+                <h2>Disaster Information</h2>
+                <p>Details about current disasters and relief efforts.</p>
+            </div>
+        </div>
+        <div class="info-section">
+            <div class="info-text">
+                <h2>Importance of Donations</h2>
+                <p>Your donations help us provide essential supplies to those in need.</p>
+            </div>
+            <img src="donation-importance.jpg" alt="Donation Importance">
+        </div>
+    </section>
+
+    <section class="charts">
+        <div class="chart">
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="barChart"></canvas>
+        </div>
+    </section>
+    <hr>
+    <!--update disaster form-->
+    <div class="container">
+        <h1>Emergency / Disaster Update</h1>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="disaster-location">Disaster Location</label>
+                    <input type="text" id="disaster-location" name="disaster-location" required>
+                </div>
+                <div class="form-group">
+                    <label for="current-location">Current Location on Map</label>
+                    <div id="map"></div>
+                    <input type="hidden" id="current-location" name="current-location">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="disaster-type">Disaster Type</label>
+                    <select id="disaster-type" name="disaster-type" required>
+                        <option value="earthquake">Earthquake</option>
+                        <option value="flood">Flood</option>
+                        <option value="hurricane">Hurricane</option>
+                        <option value="wildfire">Wildfire</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="upload-picture">Upload Picture</label>
+                    <input type="file" id="upload-picture" name="upload-picture" accept="image/*">
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+<!-- CODE FOR TIPS IN DISASTER STARTS-->
+<section class="tips-section">
+    <div class="heading-box">
+        <h2>Tips to Follow in Emergency Situation</h2>
+    </div>
+    <br>
+    <label for="disaster-type">Select Disaster Type:</label>
+    <select id="disaster-type" name="disaster-type" onchange="showDisasterTips()">
+        <option value="">Select a disaster</option>
+        <option value="earthquake">Earthquake</option>
+        <option value="flood">Flood</option>
+        <option value="fire">Fire</option>
+        <option value="hurricane">Hurricane</option>
+    </select>
+    <div class="tips-container">
+        <div id="disaster-tips" class="disaster-tips"></div>
+        <div id="disaster-video" class="disaster-video"></div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<!--the new dragged menue-->
+<div class="wrapper"> 
+    <i id="left" class="fa-solid  fas fa-angle-left"></i> 
+    <ul class="carousel"> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png" alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;"> 
+                Donator Experience
+              </h2> 
+            <span>"It feels great to help those in need!"</span> 
+        </li> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png" alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;">Donator Experience</h2> 
+            <span>"The donation process is simple and transparent."</span> 
+        </li> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png"  alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;">Donator Experience</h2> 
+            <span>"I'm happy to contribute to such a noble cause."</span> 
+        </li> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png" alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;">Donator Experience</h2> 
+            <span>"The donation process is simple and transparent."</span> 
+        </li> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png" alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;">Donator Experience</h2> 
+            <span>"I'm happy to contribute to such a noble cause."</span> 
+        </li> 
+        <li class="card"> 
+            <div class="img"><img src= "image.png" alt="" draggable="false"> </div> 
+            <h2 style="color: green; font-weight:bold;">Donator Experience</h2> 
+            <span>"I'm happy to contribute to such a noble cause."</span> 
+        </li> 
+    </ul> 
+    <i id="right" class="fa-solid fas fa-angle-right"></i> 
+</div> 
+<!-- CODE FOR TIPS IN DISASTER ENDS
+
+    <section class="experiences">
+        <div class="experience">
+            <h3>Donator Experience</h3>
+            <p>"It feels great to help those in need!"</p>
+        </div>
+        <div class="experience">
+            <h3>Donator Experience</h3>
+            <p>"The donation process is simple and transparent."</p>
+        </div>
+        <div class="experience">
+            <h3>Donator Experience</h3>
+            <p>"I'm happy to contribute to such a noble cause."</p>
+        </div>
+    </section>   -->
+    
+    <footer>
+        
+         <div class="footer-container">
+            <div class="footer-top">
+                <a href="#top" class="back-to-top">Back to top</a>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Get to Know Us</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Vision and Idea</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect with Us</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">linkedin</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Be our Partner</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">Admin</a></li>
+                        <li><a href="#">Donator</a></li>
+                        <li><a href="#">user</a></li>
+                        <li><a href="#">Collaborater</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Let Us Help You</h3>
+                    <hr>
+                    <ul>
+                        <li><a href="#">Your Account</a></li>
+                       
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-countries">
+                    <select name="country">
+                   <option value="India">India</option>
+                    </select>
+                    <select name="language">
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                    </select>
+                </div>
+                <div class="footer-legal">
+                    Created By-      
+                    |<a href="www.linkedin.com/in/harshit-bansal-a06a70225 ">Harshit Bansal</a> | 
+                    <a href="#linkedin ">Ishan Mudgal</a> | 
+                    <a href="#linkedin">Tarush saxena</a> | 
+                    © 2024 DDRP. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

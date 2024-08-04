@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Disaster Resource Planner</title>
+    <link rel="stylesheet" href="styles(db).css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                
+                <li><a href="Donations">Donations</a></li>
+                <li><a href="#about Us">About Us</a></li>
+                <li><a href="#contact Us">Contact Us</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            
+            <header class="header">
+                <nav class="top-navbar">
+                    <span class="ddrp-tag">DDRP</span>
+                    <div class="nav-buttons">
+                        <a href="#signin">Sign In</a>
+                        <a href="#signup">Sign Up</a>
+                    </div>
+                </nav>
+                <img src="header.jpg" alt="Head Image">
+            </header>
+            <section class="summary-boxes">
+                <div class="summary-box">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Total Requirement</h3>
+                    <p>$100,000</p>
+                </div>
+                <div class="summary-box">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Total Donated</h3>
+                    <p>$75,000</p>
+                </div>
+            </section>
+            <section class="about-disaster">
+                <h2>About Disasters</h2>
+                <p>Disasters can strike at any moment, causing widespread devastation and disruption. From natural disasters like earthquakes, hurricanes, and floods to human-made disasters such as industrial accidents and conflicts, the impact on communities can be severe and long-lasting.</p>
+                <img src="disaster1.jpg" alt="Disaster Image">
+                <p>It is crucial to be prepared and have the necessary resources to respond effectively when disaster strikes. This includes having emergency supplies, trained personnel, and a coordinated plan in place to provide immediate relief and support to those affected.</p>
+                <img src="disaster2.jpg" alt="Disaster Image">
+            </section>
+            <section class="importance-donation">
+                <h2>The Importance of Donations</h2>
+                <p>Donations play a vital role in disaster relief efforts. They provide the necessary funding to supply food, water, shelter, and medical care to those in need. Without donations, many relief organizations would be unable to operate and provide the essential services that help communities recover and rebuild after a disaster.</p>
+                <img src="donation1.jpg" alt="Donation Image">
+                <p>Your contributions make a significant difference. Whether it is a small or large donation, every bit helps in providing relief and rebuilding efforts. Together, we can make a positive impact and help those affected by disasters to get back on their feet.</p>
+                <img src="donation2.jpg" alt="Donation Image">
+            </section>
+            <section class="charts">
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </section>
+            <section class="donators-experiences">
+                <div class="donator-experience">
+                    <h2>Donator's Experience</h2>
+                    <p>"Donating to this cause has been a transformative experience. Seeing the impact firsthand has been incredibly rewarding."</p>
+                    <p>- John Doe</p>
+                </div>
+                <div class="donator-experience">
+                    <h2>Donator's Experience</h2>
+                    <p>"It feels great to contribute to such a noble cause. The organization has been very transparent with how donations are used."</p>
+                    <p>- Jane Smith</p>
+                </div>
+                <div class="donator-experience">
+                    <h2>Donator's Experience</h2>
+                    <p>"Being a part of this community has enriched my life in ways I never imagined. The support from other donors is incredible."</p>
+                    <p>- Alex Johnson</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Pie Chart
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    data: [10, 20, 30],
+                    backgroundColor: ['red', 'blue', 'yellow']
+                }]
+            }
+        });
+
+        // Line Chart
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April'],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [0, 10, 5, 2],
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            }
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [10, 20, 30],
+                    backgroundColor: ['red', 'blue', 'yellow']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

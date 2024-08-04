@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="ddtest.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="scriptddtset.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+                <span>PMNRF</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Donors</a></li>
+                    <li><a href="#">Orders</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <h1>User Dashboard</h1>
+                <div class="profile-menu">
+                    <div class="notifications">
+                        <span class="bell-icon"></span>
+                    </div>
+                    <div class="profile-dropdown">
+                        <span class="profile-name">Tarun Saxena</span>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">Signout</a>
+                            <a href="#">Certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="dashboard-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon"></span>
+                        <span class="card-title">Total Requirements</span>
+                    </div>
+                    <div class="card-value">75</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon"></span>
+                        <span class="card-title">Total Delivered</span>
+                    </div>
+                    <div class="card-value">357</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon"></span>
+                        <span class="card-title">Total Benefited</span>
+                    </div>
+                    <div class="card-value">128</div>
+                </div>
+            </section>
+            <section class="charts">
+                <div class="chart-container">
+                    <div class="chart">
+                        <h2>Pie Chart</h2>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h2>Customer Map</h2>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart">
+                    <h2>Requirements</h2>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </section>
+            <section class="donors-experience">
+                <h2>Donors Experience</h2>
+                <div class="experience-cards">
+                    <div class="experience-card">
+                        <span class="donor-name">Rakesh</span>
+                        <span class="experience-time">2 days ago</span>
+                        <p class="experience-text">Sample text</p>
+                        <div class="experience-rating">4.5</div>
+                    </div>
+                    <div class="experience-card">
+                        <span class="donor-name">Mukesh</span>
+                        <span class="experience-time">2 days ago</span>
+                        <p class="experience-text">Sample text</p>
+                        <div class="experience-rating">4.0</div>
+                    </div>
+                    <div class="experience-card">
+                        <span class="donor-name">Suresh</span>
+                        <span class="experience-time">2 days ago</span>
+                        <p class="experience-text">Sample text</p>
+                        <div class="experience-rating">4.5</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

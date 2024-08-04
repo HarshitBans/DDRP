@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="styles(sup).css">
+</head>
+<body>
+    <div class="container">
+        <form class="signup-form" action="#" method="post">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group"> 
+                <label for="photo">Upload Photo</label>
+                <input type="file" id="photo" name="photo" required><i id="optional">optional*</i>
+            </div>
+            <div class="form-group captcha-group">
+                <label for="captcha">CAPTCHA</label>
+                <img src="captcha-image.jpg" alt="CAPTCHA" class="captcha-image">
+                <input type="text" id="captcha" name="captcha" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
